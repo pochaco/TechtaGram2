@@ -19,15 +19,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var imageView: UIImageView! //スタンプ画像が入るImageView
     
+    var originalImage: UIImage!  //画像加工するための元となる画像
     var filter: CIFilter!  //画像加工するフィルターの宣言
     
-    //サウンドファイルを読み込んでプレイヤーを作る
-  
-    var soundNameArray: [String] = ["drumSound","pianoSound"]
-    
-//    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:"drumSound")!.data)
-    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:soundNameArray[imageIndex])!.data)
-    
+//    //サウンドファイルを読み込んでプレイヤーを作る
+//
+//    var soundNameArray: [String] = ["drumSound","pianoSound"]
+//
+////    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:"drumSound")!.data)
+//    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:soundnameArray)!.data)
+//
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,15 +57,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func soundPlay() {
-        
-
-        SoundPlayer.currentTime = 0
-        SoundPlayer.play()
+       
     }
     
     @IBAction func selectedFirst() {
         imageIndex = 1
-        soundPlay()
     }
     
     @IBAction func selectedSecond() {
@@ -91,33 +88,60 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //haikeiImageを背景に設定する
         haikeiImageView.image = haikeiImage
         
+        //加工する前の画像をhaikeiimageに
+        originalImage = haikeiImageView.image
+        
         //フォトライブラリを閉じる
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-//    @IBAction func colorFilter() {
-//
-//        //フィルターの設定
-//        filter = CIFilter(name: <#T##String#>)
-//        filter.setValue(<#T##value: Any?##Any?#>, forKey: kCIInputImageKey)
-//
+    @IBAction func colorFilter() {
+
+        let filterImage: CIImage = CIImage(image: originalImage)!
+        //フィルターの設定
+        filter = CIFilter(name: "CIColorControls")!
+        filter.setValue(filterImage, forKey: kCIInputImageKey)
+
 //        filter.setValue(1.0, forKey: "inputSaturation")
 //        filter.setValue(0.5, forKey: "inputBrightness")
 //        filter.setValue(2.5, forKey: "inputContrast")
-//
-//        let ctx = CIContext(options: nil)
-//        let cgImage = ctx.createCGImage(filter.outputImage!, from: filter.outputImage!.extent)
-//        heikeiImageView.image = UIImage(cgImage: cgImage!)
-//
-//
-//    }
+
+        let ctx = CIContext(options: nil)
+        let cgImage = ctx.createCGImage(filter.outputImage!, from: filter.outputImage!.extent)
+        //haikeiImageViewに加工した画像を表示
+        haikeiImageView.image = UIImage(cgImage: cgImage!)
+    }
     
     @IBAction func sharePhoto() {
+        //投稿する時に一緒に載せるコメント
+        let shareText = "写真加工したよーーーーん"
         
+        let capture = UIGraphicsGetImageFromCurrentImageContext()
+        //投稿する画像の選択
+        let shareImage = capture
+        
+        //投稿するコメントと画像の準備
+        let activityItems: [Any] = [shareText, shareImage]
+        
+        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        
+        let excludedActivityTypes = [UIActivity.ActivityType.postToWeibo, .saveToCameraRoll, .print]
+        
+        activityViewController.excludedActivityTypes = excludedActivityTypes
+        
+        present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func savePhoto() {
+        //画面上のスクリーンショットを取得
+        let rect:CGRect = CGRect(x: 0, y: 30, width: 320, height: 380)
+        UIGraphicsBeginImageContext(rect.size)
+        self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let capture = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         
+        //フォトライブラリに保存
+        UIImageWriteToSavedPhotosAlbum(capture!, nil, nil, nil)
     }
 
 
