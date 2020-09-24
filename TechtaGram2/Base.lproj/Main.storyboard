@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,112 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TechtaGram2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-JO-Q8V">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JcL-MJ-UMX">
+                                <rect key="frame" x="20" y="407" width="335" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjI-jS-Ggk">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="Image">
+                                            <color key="titleColor" red="0.98392683267593384" green="0.9805876612663269" blue="0.94295531511306763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openAlbum" destination="BYZ-38-t0r" eventType="touchUpInside" id="T7j-x7-fRZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q62-Lu-GtP">
+                                        <rect key="frame" x="86.5" y="0.0" width="76" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="Filter">
+                                            <color key="titleColor" red="0.98392683267593384" green="0.9805876612663269" blue="0.94295531511306763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="colorFilter" destination="BYZ-38-t0r" eventType="touchUpInside" id="h6D-J0-vVs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rke-PU-bcv">
+                                        <rect key="frame" x="172.5" y="0.0" width="76.5" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" red="0.98392683267593384" green="0.9805876612663269" blue="0.94295531511306763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharePhoto" destination="BYZ-38-t0r" eventType="touchUpInside" id="6I0-HQ-KEL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSQ-5l-Alw">
+                                        <rect key="frame" x="259" y="0.0" width="76" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.98392683267593384" green="0.9805876612663269" blue="0.94295531511306763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="savePhoto" destination="BYZ-38-t0r" eventType="touchUpInside" id="jVH-G0-FwT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Chl-Mr-HuM"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tPQ-eH-egE">
+                                <rect key="frame" x="-5" y="477" width="385" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBK-q7-uEx">
+                                        <rect key="frame" x="0.0" y="0.0" width="192.5" height="200"/>
+                                        <state key="normal" title="Button" image="drumImage"/>
+                                        <connections>
+                                            <action selector="selectedFirst" destination="BYZ-38-t0r" eventType="touchUpInside" id="i8i-qQ-vkK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utD-dQ-RwG">
+                                        <rect key="frame" x="192.5" y="0.0" width="192.5" height="200"/>
+                                        <state key="normal" title="Button" image="pianoImage"/>
+                                        <connections>
+                                            <action selector="selectedSecond" destination="BYZ-38-t0r" eventType="touchUpInside" id="dBc-kq-ff9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98392683267593384" green="0.9805876612663269" blue="0.94295531511306763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KCc-JO-Q8V" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Cue-tu-UXF"/>
+                            <constraint firstItem="tPQ-eH-egE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-5" id="KP6-vU-N0M"/>
+                            <constraint firstItem="JcL-MJ-UMX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ntj-gi-w6H"/>
+                            <constraint firstItem="KCc-JO-Q8V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SVj-oY-8jV"/>
+                            <constraint firstItem="KCc-JO-Q8V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="USQ-hu-nc6"/>
+                            <constraint firstItem="JcL-MJ-UMX" firstAttribute="top" secondItem="KCc-JO-Q8V" secondAttribute="bottom" constant="40" id="Yeg-Lr-FJN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tPQ-eH-egE" secondAttribute="trailing" constant="-5" id="ayC-1J-PB0"/>
+                            <constraint firstItem="tPQ-eH-egE" firstAttribute="top" secondItem="JcL-MJ-UMX" secondAttribute="bottom" id="ou9-YL-uEY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KCc-JO-Q8V" secondAttribute="bottom" constant="300" id="sPI-MV-yZM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JcL-MJ-UMX" secondAttribute="trailing" constant="20" id="tWD-eY-Ufj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="haikeiImageView" destination="KCc-JO-Q8V" id="8eF-zl-RpD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="drumImage" width="200" height="200"/>
+        <image name="pianoImage" width="200" height="200"/>
+    </resources>
 </document>
