@@ -21,6 +21,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var filter: CIFilter!  //画像加工するフィルターの宣言
     
+    //サウンドファイルを読み込んでプレイヤーを作る
+  
+    var soundNameArray: [String] = ["drumSound","pianoSound"]
+    
+//    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:"drumSound")!.data)
+    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:soundNameArray[imageIndex])!.data)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +56,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func soundPlay() {
-        //サウンドファイルを読み込んでプレイヤーを作る
-        var soundNameArray: [String] = ["drumSound","pianoSound"]
-        let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name: soundNameArray[imageIndex - 1 ])!.data)
+        
 
         SoundPlayer.currentTime = 0
         SoundPlayer.play()
