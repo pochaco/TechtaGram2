@@ -12,7 +12,7 @@ import AVFoundation
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //スタンプボタンの設定
-    var imageNameArray: [String] = ["drumImage","pianoImage"]
+    var imageNameArray: [String] = ["bear","panda","lion","pig","sheep","owl"]
     var imageIndex: Int = 0
     
     @IBOutlet weak var haikeiImageView: UIImageView!
@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var filter: CIFilter!  //画像加工するフィルターの宣言
     
     //サウンドファイルの設定
-    var soundNameArray: [String] = ["drumSound","pianoSound"]
+    var soundNameArray: [String] = ["drumSound","pianoSound","pianoSound","pianoSound","pianoSound","pianoSound"]
     
     var SoundPlayer: AVAudioPlayer!
     
@@ -75,6 +75,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func selectedSecond() {
         imageIndex = 2
+    }
+    
+    @IBAction func selectedThird() {
+        imageIndex = 3
+    }
+    
+    @IBAction func selectedForth() {
+        imageIndex = 4
+    }
+    
+    @IBAction func selectedFifth() {
+        imageIndex = 5
+    }
+    
+    @IBAction func selectedSixth() {
+        imageIndex = 6
     }
 
 
