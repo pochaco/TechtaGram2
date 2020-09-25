@@ -12,7 +12,7 @@ import AVFoundation
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //スタンプボタンの設定
-    var imageNameArray: [String] = ["bear","panda","lion","pig","sheep","owl"]
+    var imageNameArray: [String] = ["bearImage","pandaImage","lionImage","pigImage","sheepImage","owlImage"]
     var imageIndex: Int = 0
     
     @IBOutlet weak var haikeiImageView: UIImageView!
@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var filter: CIFilter!  //画像加工するフィルターの宣言
     
     //サウンドファイルの設定
-    var soundNameArray: [String] = ["drumSound","pianoSound","pianoSound","pianoSound","pianoSound","pianoSound"]
+    var soundNameArray: [String] = ["bearSound","pandaSound","lionSound","pigSound","sheepSound","owlSound"]
     
     var SoundPlayer: AVAudioPlayer!
     
