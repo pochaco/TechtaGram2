@@ -24,8 +24,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //サウンドファイルの設定
     var soundNameArray: [String] = ["drumSound","pianoSound"]
-    //サウンドファイルを読み込んで、プレイヤーを作る
-    let SoundPlayer = try! AVAudioPlayer(data: NSDataAsset(name: soundNameArray[imageIndex - 1])!.data)
+    
+    var SoundPlayer: AVAudioPlayer!
+    
     
     
     override func viewDidLoad() {
@@ -58,6 +59,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func soundPlay() {
+        //サウンドファイルを読み込んで、プレイヤーを作る
+        SoundPlayer = try! AVAudioPlayer(data: NSDataAsset(name: soundNameArray[imageIndex - 1])!.data)
         //ドラムの音を巻き戻す
         SoundPlayer.currentTime = 0
         
