@@ -22,13 +22,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var originalImage: UIImage!  //画像加工するための元となる画像
     var filter: CIFilter!  //画像加工するフィルターの宣言
     
-//    //サウンドファイルを読み込んでプレイヤーを作る
-//
-//    var soundNameArray: [String] = ["drumSound","pianoSound"]
-//
-////    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:"drumSound")!.data)
-//    let SoundPlayer = try!AVAudioPlayer(data: NSDataAsset(name:soundnameArray)!.data)
-//
+    //サウンドファイルの設定
+    var soundNameArray: [String] = ["drumSound","pianoSound"]
+    //サウンドファイルを読み込んで、プレイヤーを作る
+    let SoundPlayer = try! AVAudioPlayer(data: NSDataAsset(name: soundNameArray[imageIndex - 1])!.data)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +51,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             //画像を表示する
             self.view.addSubview(imageView)
+            
+            //音を鳴らす
+            soundPlay()
         }
     }
     
     func soundPlay() {
-       
+        //ドラムの音を巻き戻す
+        SoundPlayer.currentTime = 0
+        
+        //音を再生する
+        SoundPlayer.play()
     }
+    
     
     @IBAction func selectedFirst() {
         imageIndex = 1
@@ -102,9 +108,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         filter = CIFilter(name: "CIColorControls")!
         filter.setValue(filterImage, forKey: kCIInputImageKey)
 
-//        filter.setValue(1.0, forKey: "inputSaturation")
-//        filter.setValue(0.5, forKey: "inputBrightness")
-//        filter.setValue(2.5, forKey: "inputContrast")
+        filter.setValue(1.0, forKey: "inputSaturation")
+        filter.setValue(0.5, forKey: "inputBrightness")
+        filter.setValue(2.5, forKey: "inputContrast")
 
         let ctx = CIContext(options: nil)
         let cgImage = ctx.createCGImage(filter.outputImage!, from: filter.outputImage!.extent)
